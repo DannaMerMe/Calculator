@@ -1,8 +1,12 @@
 package co.edu.uptc.animals_rest.services;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import co.edu.uptc.animals_rest.models.Category;
@@ -37,7 +41,7 @@ public class AnimalService {
             if (parts.length == 2) {
                 String categoria = parts[0].trim();
                 String nombre = parts[1].trim();                
-                animales.add(new Animal(nombre, categoria));
+                animales.add(new Animal(nombre, categoria,nameHost(),String.valueOf(Date.from(Instant.now()))));
             }
         }
     
@@ -54,7 +58,7 @@ public class AnimalService {
             if (parts.length == 2) {
                 String category = parts[0].trim();
                 String name = parts[1].trim();                
-                animales.add(new Animal(name, category));
+                animales.add(new Animal(name, category,nameHost(),String.valueOf(Date.from(Instant.now()))));
             }
         }
     
@@ -71,7 +75,7 @@ public class AnimalService {
                 String name = parts[1].trim();
                 Category aux = searchCategories(categories,category);
                 if (aux.getCategory().isEmpty()){
-                    categories.add(new Category(category,1));
+                    categories.add(new Category(category,1,nameHost(),String.valueOf(Date.from(Instant.now()))));
                 }else{
                     int x = aux.getNumber();
                     aux.setNumber(x+1);
@@ -82,13 +86,23 @@ public class AnimalService {
     }
 
     private Category searchCategories(List<Category> tmp,String nameCategory){
-        Category category = new Category("",0);
+        Category category = new Category("",0,nameHost(),String.valueOf(Date.from(Instant.now())));
         for (Category aux: tmp){
             if (aux.getCategory().compareToIgnoreCase(nameCategory)==0){
                 category = aux;
             }
         }
         return category;
+    }
+
+    private String nameHost(){
+        InetAddress inetAddress = null;
+        try {
+            inetAddress = InetAddress.getLocalHost();
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
+        return inetAddress.getHostName();
     }
 
 }

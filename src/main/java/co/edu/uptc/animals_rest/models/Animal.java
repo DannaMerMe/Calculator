@@ -10,4 +10,6 @@ import lombok.Setter;
 public class Animal {
     private String name;
     private String category;
+    private String nameContent;
+    private String date;
 }

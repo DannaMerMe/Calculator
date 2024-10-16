@@ -12,5 +12,6 @@ public class Category {
 
     private String category;
     private int number;
-
+    private String nameContent;
+    private String date;
 }
