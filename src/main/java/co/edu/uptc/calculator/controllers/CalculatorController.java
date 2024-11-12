@@ -21,20 +21,30 @@ public class CalculatorController {
 
    @Autowired
     private CalculatorService calculatorService;
+   
 
    @GetMapping("/division")
-    public int getDivisio(@RequestParam int dividend, @RequestParam  int divider ) {
+    public int getDivision(@RequestParam int dividend, @RequestParam  int divider ) {
+      logger.info("etDivision called");
         return calculatorService.division(dividend, divider);
     }
 
     @GetMapping("/root")
     public double getSquareRoot(@RequestParam int number) {
+      logger.info("getSqueareRoot called");
        return calculatorService.squareRoot(number);
     }
 
-    @GetMapping("loga")
-    public double getMethodName(@RequestParam int number) {
+    @GetMapping("/loga")
+    public double getLogatihm(@RequestParam int number) {
+      logger.info("getLogatihm called");
        return calculatorService.logarithm(number);
     }
+    @GetMapping("/power")
+    public double getPower(@RequestParam int base, @RequestParam int exponent) {
+      logger.info("getPower called");
+      return calculatorService.power(base, exponent);
+    }
+    
 
 }

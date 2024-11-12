@@ -1,28 +1,17 @@
 package co.edu.uptc.calculator.services;
 
-import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.time.Instant;
-import java.util.Date;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import co.edu.uptc.calculator.exception.InvalidRangeException;
-
-import java.util.ArrayList;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
+
 @Service
 public class CalculatorService {
      private static final Logger logger = LoggerFactory.getLogger(CalculatorService.class);
-    @Value("${animal.file.path}")
-    private String filePath;
+
 
 
     private String nameHost(){
@@ -36,17 +25,44 @@ public class CalculatorService {
     }
 
     public int division(int number1, int number2){
+        String hostName= nameHost();
+        logger.info("Host {} - Calculating division of {} by {}", hostName, number1, number2);
+        if(number2==0){
+            logger.error("Host {} - Division by zero attempted!", hostName);
+            throw new ArithmeticException("Cannot divide by zero");
+        }
+        
         int result = number1/number2;
         return result;
     }
 
     public double squareRoot(int number){
+       String hostName= nameHost();
+        if(number < 0){
+           logger.error("Host {} - Negative number for square root error!", hostName);
+           throw new IllegalArgumentException("Cannot calculate square root of a negative number");
+        }
         double result= Math.sqrt(number);
         return result;
     }
 
     public double logarithm(int number){
+        String hostName = nameHost();
+        if (number <= 0) {
+            logger.error("Host {} - Non-positive number for logarithm error!", hostName);
+            throw new IllegalArgumentException("Number must be positive for logarithm calculation");
+        }
         double result = Math.log(number);
+        return result;
+    }
+
+    public double power(int base, int exponent){
+        String hostName = nameHost();
+        if (base == 0 && exponent < 0) {
+            logger.error("Host {} - Non-positive number for power error!", hostName);
+            throw new ArithmeticException("Zero cannot be raised to a negative exponent");
+        }
+        double result= Math.pow(base, exponent);
         return result;
     }
 
