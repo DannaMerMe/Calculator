@@ -1,7 +1,4 @@
-package co.edu.uptc.animals_rest.controllers;
-
-import java.io.IOException;
-import java.util.List;
+package co.edu.uptc.calculator.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,50 +8,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.uptc.animals_rest.services.AnimalService;
+import co.edu.uptc.calculator.services.CalculatorService;
 
 
 
 
 @RestController
 @RequestMapping("/animal")
-public class AnimalController {
+public class CalculatorController {
 
- private static final Logger logger = LoggerFactory.getLogger(AnimalController.class);
+ private static final Logger logger = LoggerFactory.getLogger(CalculatorController.class);
 
    @Autowired
-    private AnimalService animalService;
+    private CalculatorService calculatorService;
 
-
-    @GetMapping("/all")
-    public List<Animal> getAnimalAll() throws IOException {
-        logger.info("getAnimalAll called");
-        return animalService.getAnimalAll();
-    }
-
-    @GetMapping("/range")
-    public List<Animal> getAnimal(@RequestParam int from, @RequestParam int to) throws IOException {
-        logger.info("getAnimal called with parameters: from = {}, to = {}", from, to);
-        return animalService.getAnimalInRange(from, to);
-    }
-
-    @GetMapping("/numberByCategory")
-    public List<Category> getNumberByCategory() throws IOException {
-        return animalService.getCantAnimalForCategory();
-    }
-
-    @GetMapping("/division")
-    public double getDivisio(@RequestParam int dividend, @RequestParam  int divider ) {
-        return animalService.division(dividend, divider);
+   @GetMapping("/division")
+    public int getDivisio(@RequestParam int dividend, @RequestParam  int divider ) {
+        return calculatorService.division(dividend, divider);
     }
 
     @GetMapping("/root")
     public double getSquareRoot(@RequestParam int number) {
-        return animalService.squareRoot(number);
+       return calculatorService.squareRoot(number);
     }
+
     @GetMapping("loga")
     public double getMethodName(@RequestParam int number) {
-        return animalService.logarithm(number);
+       return calculatorService.logarithm(number);
     }
 
 }

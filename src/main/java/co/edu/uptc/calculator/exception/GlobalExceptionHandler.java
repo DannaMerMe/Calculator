@@ -1,4 +1,4 @@
-package co.edu.uptc.animals_rest.exception;
+package co.edu.uptc.calculator.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
