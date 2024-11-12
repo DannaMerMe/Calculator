@@ -3,7 +3,6 @@ package co.edu.uptc.animals_rest.controllers;
 import java.io.IOException;
 import java.util.List;
 
-import co.edu.uptc.animals_rest.models.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.edu.uptc.animals_rest.models.Animal;
 import co.edu.uptc.animals_rest.services.AnimalService;
 
 
@@ -43,6 +41,20 @@ public class AnimalController {
     @GetMapping("/numberByCategory")
     public List<Category> getNumberByCategory() throws IOException {
         return animalService.getCantAnimalForCategory();
+    }
+
+    @GetMapping("/division")
+    public double getDivisio(@RequestParam int dividend, @RequestParam  int divider ) {
+        return animalService.division(dividend, divider);
+    }
+
+    @GetMapping("/root")
+    public double getSquareRoot(@RequestParam int number) {
+        return animalService.squareRoot(number);
+    }
+    @GetMapping("loga")
+    public double getMethodName(@RequestParam int number) {
+        return animalService.logarithm(number);
     }
 
 }

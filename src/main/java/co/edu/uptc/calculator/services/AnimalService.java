@@ -9,11 +9,9 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
-import co.edu.uptc.animals_rest.models.Category;
 import org.springframework.stereotype.Service;
 
 import co.edu.uptc.animals_rest.exception.InvalidRangeException;
-import co.edu.uptc.animals_rest.models.Animal;
 
 import java.util.ArrayList;
 
@@ -103,6 +101,21 @@ public class AnimalService {
             throw new RuntimeException(e);
         }
         return inetAddress.getHostName();
+    }
+
+    public int division(int number1, int number2){
+        int result = number1/number2;
+        return result;
+    }
+
+    public double squareRoot(int number){
+        double result = Math.sqrt(number);
+        return result;
+    }
+
+    public double logarithm(int number){
+        double result = Math.log(number);
+        return result;
     }
 
 }
