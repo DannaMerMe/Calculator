@@ -25,19 +25,19 @@ public class CalculatorController {
 
    @GetMapping("/division")
     public int getDivision(@RequestParam int dividend, @RequestParam  int divider ) {
-      logger.info("etDivision called");
+     logger.info("etDivision called");
         return calculatorService.division(dividend, divider);
     }
 
     @GetMapping("/root")
     public double getSquareRoot(@RequestParam int number) {
-      logger.info("getSqueareRoot called");
+     logger.info("getSqueareRoot called");
        return calculatorService.squareRoot(number);
     }
 
     @GetMapping("/loga")
     public double getLogatihm(@RequestParam int number) {
-      logger.info("getLogatihm called");
+     logger.info("getLogatihm called");
        return calculatorService.logarithm(number);
     }
     @GetMapping("/power")
