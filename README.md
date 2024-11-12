@@ -1,15 +1,15 @@
-# ANIMALS REST
+# Calculator 
 
 ### Author
-Germán Amézquita Becerra
-2024 Septiembre
+Danna Xiomara Merchán Mesa
+2024 Noviembre
 
 ## Description
 
-This project returns a list of animals with the following endpoint:
+This project returns a results of operations between number with the following endpoint:
 
-1. `animal/all`   
-   Returns list with all animals.
+1. `animal/division?dividend={number}&divider{number}`   
+   Returns result of division.
 2.  `animal/range/?from={number}&to={number}`
    Returns the animals located in the file between those positions.
 
@@ -17,9 +17,7 @@ This project returns a list of animals with the following endpoint:
 ## use endpoint
 
 Example 1: 
-`http://localhost:8081/animal/range?from=1&to=40`
-`http://localhost:8081/animal/range?from=1&to=409`
-
+`http://localhost:8081/animal/division?dividend=11.01&divider=2`
 Example 2: 
 `http://localhost:8081/animal/all`
 
