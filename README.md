@@ -17,9 +17,7 @@ This project returns a results of operations between number with the following e
 ## use endpoint
 
 Example 1: 
-`http://localhost:8081/animal/range?from=1&to=40`
-`http://localhost:8081/animal/range?from=1&to=409`
-
+`http://localhost:8081/animal/division?dividend=11.01&divider=2`
 Example 2: 
 `http://localhost:8081/animal/all`
 
